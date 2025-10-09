@@ -16,7 +16,10 @@ bool isSafe(int arr[][4],int n,int i,int j,int visited[][4]){
 }
 int recMaze(int arr[][4], int n,int r,int c,int visited[][4],string path){
 	
-	
+		if (arr[0][0]==0){
+		cout << "no starting point"<<endl;
+		return 0;
+	}
 	if (r==n-1 && c==n-1){
 		cout <<path<<endl;
 		
