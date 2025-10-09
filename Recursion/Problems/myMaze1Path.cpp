@@ -35,28 +35,28 @@ bool recMaze(int arr[][4], int n,int r,int c,int visited[][4]){
 	//move right
 	if(isSafe(arr,n,r,c+1,visited)){
 		visited[r][c+1]=1;
-		return recMaze(arr,n,r,c+1,visited);
+		if( recMaze(arr,n,r,c+1,visited)) return true;
 		visited[r][c+1]=0;
 	}
 	
 	// move down
 		if(isSafe(arr,n,r+1,c,visited)){
 		visited[r+1][c]=1;	
-		return recMaze(arr,n,r+1,c,visited);
+		if (recMaze(arr,n,r+1,c,visited)) return true;
 		visited[r+1][c]=0;
 		
 	}	
 	//move left
 		if(isSafe(arr,n,r,c-1,visited)){
 			visited[r][c-1]=1;
-		return recMaze(arr,n,r,c-1,visited);
+		if ( recMaze(arr,n,r,c-1,visited)) return true;
 			visited[r][c-1]=0;
 	}		
 	
 	// move up
 		if(isSafe(arr,n,r-1,c,visited)){
 		visited[r-1][c]=1;
-		return recMaze(arr,n,r-1,c,visited);
+		if (recMaze(arr,n,r-1,c,visited)) return true;
 		visited[r-1][c]=0;
 	}	
 	
@@ -69,8 +69,8 @@ int main (){
 	int n=4;
 	int arr[4][4] = {
     {1, 0, 0, 0},
-    {1, 1, 0, 1},
-    {0, 0, 0, 0},
+    {1, 1, 1, 1},
+    {1, 1, 0, 0},
     {1, 1, 1, 1}
 };
 
