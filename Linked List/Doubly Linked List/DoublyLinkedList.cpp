@@ -117,6 +117,41 @@ class DoublyList{
 			}
 			cout <<"NULL"<<endl;
 		}
+
+	void insertatPos(int val, int pos){
+			
+			if (pos<0){
+				cout <<"Invalid Pos."<<endl;
+				return;
+			}
+			else if (pos==0){
+				insertAtBeg(val);
+			}
+			else{
+				Node * temp =head;
+				Node * newNode = new Node(val);
+				for (int i=0;i<pos-1;i++){
+					temp = temp->next;
+					if (temp==NULL){
+						cout <<"Invalid pos."<<endl;
+						return ;
+					}
+					
+				}
+				if (temp->next == NULL) {
+            		temp->next = newNode;
+            		newNode->prev = temp;
+           			tail = newNode;
+        }
+       			 else{
+		
+					newNode->next = temp->next;
+					temp->next->prev = newNode;
+					temp->next = newNode;
+					newNode->prev= temp;
+			}
+			}
+		}
 		
 };
 
