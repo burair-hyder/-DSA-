@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+
+
+class myStack{
+	
+	private: 
+		int *arr;
+		int cap;
+		int top;
+		
+	public:
+		myStack(int capp){
+			cap = capp;
+			arr=  new int[cap];
+			top =-1;
+		}
+		
+		void push(int val){
+			if (top==cap-1){
+				cout <<"Stack OverFlow."<<endl;
+				return ;
+			}
+			top++;
+			arr[top]=val;
+			
+		}
+		
+		int pop(){
+			if (top==-1){
+				cout <<"Stack UnderFlow."<<endl;
+				return -1;
+			}
+			int temp = arr[top];
+			top--;
+			return temp;
+		}
+		
+		int peek(){
+			if (top==-1){
+				cout <<"Stack is Empty."<<endl;
+				return -1;
+			}
+			return arr[top];
+		}
+		
+		bool isEmpty(){
+			if (top==-1){
+				return true;
+			}
+			return false;
+		}
+		
+		bool isFull(){
+			if (top==cap-1){
+				return true;
+			}
+			return false;
+		}
+};
+
+
+
+int main(){
+	
+	myStack s1(5);
+	
+	s1.peek();
+	s1.push(10);
+	cout <<"Element at top: "<<s1.peek()<<endl;
+	s1.push(20);
+	s1.push(30);
+	cout <<"Element at top: "<<s1.peek()<<endl;
+	
+	while (s1.isEmpty()!= true){
+		cout <<"Element Popped: "<<s1.pop()<<endl;
+	}
+	
+}
