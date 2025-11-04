@@ -163,6 +163,53 @@ Node * insertinBst(Node * root,int val){
 
 }
 
+bool isBinaryTreefull(Node * root){
+	
+	if (root==NULL){  // empty tree
+		return true;
+	}
+	if (root->left==NULL && root->right==NULL){  // no child
+		return true;
+		
+	}
+	
+	if (root->left != NULL && root->right!=NULL){ // two children
+		return inBinaryTreefull(root->left) && inBinaryTreefull(root->left); // call for left subtree and right subtree
+		// if left and right both are full then till root it is full
+	}
+	
+	return false; // else case only , 1  child 
+}
+
+
+bool isBinaryTreeComplete(Node * root){
+	
+	if (root==NULL){
+		return true;
+	}
+	
+	queue  <Node*> q;
+	q.push(root);
+	bool nullfound=false;
+	
+	while (!q.empty()){
+		Node * curr = q.front();
+		q.pop();
+		if (curr==NULL){
+			nullfound = true;
+		}
+		else{
+			if (nullfound==true){
+				return false;
+			}
+			else{
+				q.push(root->left);
+				q.push(root->right);
+			}	
+		}
+	} 
+	return true;
+}
 bool search(Node * root,int key){
 	if(root==NULL){
 		return false;
@@ -233,6 +280,8 @@ Node * deleteNode(Node * root, int key){
 	}
 	return root;
 }
+
+
 
 int main(){
 	
