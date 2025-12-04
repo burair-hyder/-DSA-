@@ -38,7 +38,7 @@ void rabinkarp(string text,string pat,int base=256,int prime=101){
 			
 		}
 		
-		if (i<n-m){ // not last window   if i==n-m this means we are at last window 
+		if (i+m<n){ // not last window   if i==n-m this means we are at last window 
 			tHash = (base * (tHash-text[i] * h)+text[i+m])%prime;
 			
 			if (tHash <0){
